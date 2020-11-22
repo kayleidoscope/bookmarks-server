@@ -17,28 +17,28 @@ bookmarksRouter
             logger.error(`Description is required`);
             return res
               .status(400)
-              .send('Invalid data');
+              .send('Description field missing.');
         }
     
         if (!rating) {
             logger.error(`Rating is required`);
             return res
               .status(400)
-              .send('Invalid data');
+              .send('Rating field missing.');
         }
           
         if (!title) {
             logger.error(`Title is required`);
             return res
               .status(400)
-              .send('Invalid data');
+              .send('Title field missing.');
         }
     
         if (!url) {
             logger.error(`URL is required`);
             return res
               .status(400)
-              .send('Invalid data');
+              .send('URL field missing.');
         }
     
         // get an id
