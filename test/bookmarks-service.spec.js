@@ -4,33 +4,12 @@ const supertest = require('supertest')
 const app = require('../src/app')
 const BookmarksService = require('../src/bookmarks-service')
 const bookmarksRouter = require("../src/bookmarks/bookmarks-router")
+const { makeBookmarksArray } = require('./bookmarks.fixtures')
 
-describe.only(`Bookmarks service object`, function() {
+describe(`Bookmarks service object`, function() {
     let db;
 
-    let testBookmarks = [
-        {
-            id: 1,
-            title: 'YNAB',
-            url: 'https://www.youneedabudget.com/',
-            description: 'Great budgeting site',
-            rating: 5
-        },
-        {
-            id: 2,
-            title: 'Google',
-            url: 'https://www.google.com/',
-            description: 'A programmers frenemy',
-            rating: 4
-        },
-        {
-            id: 3,
-            title: 'Facebook',
-            url: 'https://www.facebook.com/',
-            description: 'Less cool every year',
-            rating: 2
-        }
-    ]
+    let testBookmarks = makeBookmarksArray()
 
     before(() => {
         db = knex({
