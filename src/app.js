@@ -1,4 +1,5 @@
 require('dotenv').config()
+const knex = require('knex')
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
@@ -7,12 +8,18 @@ const { NODE_ENV } = require('./config')
 const { restart } = require('nodemon')
 const { v4: uuid } = require('uuid');
 const bookmarksRouter = require('./bookmarks/bookmarks-router');
+const BookmarksService = require('./bookmarks-service.js')
 
 const app = express()
 
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
   : 'common';
+
+const knexInstance = knex({
+    client: 'pg',
+    connection: process.env.DB_URL,
+})
 
 app.use(morgan(morganOption))
 app.use(helmet())
