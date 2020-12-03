@@ -31,7 +31,7 @@ describe(`Bookmarks service object`, function() {
                 .into('bookmarks')
                 .insert(testBookmarks)
         })
-        it(`getAllArticles() resolves all articles from 'bookmarks' table`, () => {
+        it(`getAllBookmarks() resolves all bookmarks from 'bookmarks' table`, () => {
             return BookmarksService.getAllBookmarks(db)
                 .then(actual => {
                     expect(actual).to.eql(testBookmarks)
@@ -80,7 +80,7 @@ describe(`Bookmarks service object`, function() {
     })
 
     context(`Given 'bookmarks' has no data`, () => {
-        it(`getAllArticles() resolves an empty array`, () => {
+        it(`getAllBookmarks() resolves an empty array`, () => {
             return BookmarksService.getAllBookmarks(db)
                 .then(actual => {
                     expect(actual).to.eql([])
